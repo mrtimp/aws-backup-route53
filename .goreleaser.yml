@@ -11,8 +11,8 @@ brews:
       owner: mrtimp
       name: homebrew-formulas
     directory: Formula
-    homepage: "https://github.com/mrtimp/aws-credentials-reporter"
-    description: "Retrieves credential reports for multiple AWS accounts"
+    homepage: "https://github.com/mrtimp/aws-backup-route53"
+    description: "Backup AWS Route 53 zones to CSV"
     commit_author:
       name: mrtimp
       email: timp@unfuddle.nz
