@@ -1,0 +1,19 @@
+version: "2"
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+
+formatters:
+  enable:
+    - gofmt
+  settings:
+    gofmt:
+      rewrite-rules:
+        - pattern: 'interface{}'
+          replacement: 'any'
+
+run:
+  timeout: 2m

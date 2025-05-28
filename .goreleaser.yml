@@ -1,10 +1,18 @@
 version: 2
 
 builds:
-  - goos:
-    - linux
-    - darwin
-    - windows
+  - id: backup-route53
+    binary: backup-route53
+    main: ./cmd/backup-route53
+    goos:
+      - linux
+      - darwin
+      - windows
+    ldflags:
+      - -s -w
+      - -X main.Version={{.Version}}
+      - -X main.Commit={{.Commit}}
+      - -X main.BuildDate={{.Date}}
 
 brews:
   - repository:

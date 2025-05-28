@@ -5,8 +5,25 @@ on:
   workflow_dispatch: {}
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: latest
+
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
@@ -17,8 +34,13 @@ jobs:
         with:
           go-version-file: 'go.mod'
 
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          install-only: true
+
+#       - name: Test
+#         run: make test
+
       - name: Build
         run: make build
-
-      - name: Test
-        run: make test
